@@ -145,10 +145,11 @@ class helper_plugin_snippets extends DokuWiki_Plugin {
              $snip_id = preg_quote($snip);  
              $result = preg_replace_callback(
                 "|(?<=~~SNIPPET_O)\d*(~~$snip_id~~).*?(?=~~SNIPPET_C~~$snip_id~~)|ms",
-                     function($matches){
-                         global $replacement;                         
-                         return  time()  . $matches[1]. "\n" .$replacement  . "\n";  // time() makes each update unique for renderer 
-                  }, 
+                    create_function(
+                        '$matches',
+                        'global $replacement;                         
+                         return  time()  . $matches[1]. "\n" .$replacement  . "\n"; '
+                    ),
                   $result
                 );           
           }
