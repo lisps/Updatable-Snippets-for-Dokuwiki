@@ -2,7 +2,7 @@
  * Javascript for DokuWiki Plugin snippets
  * @author Michael Klier <chi@chimeric.de>
  */
-
+jQuery(document).ready(function() {
 snippets = {
     keepopen: false,
     update: false,
@@ -244,7 +244,7 @@ function update_snippets(which) {
    var span_id = '#' + which.replace(/:/g,'_');  // de-activate links that have been called
    jQuery(span_id).css({'color':'gray', 'text-decoration':'none', 'cursor': 'initial','pointer-events': 'none'});
 }
-
+});
 jQuery(document).ready(function() {
  // hide and show update table in footer of snippets
 jQuery( "#snip_updates_but" ).click(function() { 
